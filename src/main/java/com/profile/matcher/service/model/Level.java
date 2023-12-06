@@ -1,10 +1,10 @@
 package com.profile.matcher.service.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-@Document(collection = "level")
 public class Level {
 
     private Double min;

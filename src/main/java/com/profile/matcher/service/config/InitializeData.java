@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+import static com.profile.matcher.service.util.Constants.CAMPAIGN_JSON_PATH;
+import static com.profile.matcher.service.util.Constants.PROFILE_JSON_PATH;
+
 @AllArgsConstructor
 @Component
 public class InitializeData {
@@ -24,10 +27,10 @@ public class InitializeData {
         System.out.println("Initializing data");
 
         Campaign campaign = objectMapper.readValue(
-                new ClassPathResource("/data/campaign.json").getFile(),
+                new ClassPathResource(CAMPAIGN_JSON_PATH).getFile(),
                 new TypeReference<>() {});
         Profile profile = objectMapper.readValue(
-                new ClassPathResource("/data/profile.json").getFile(),
+                new ClassPathResource(PROFILE_JSON_PATH).getFile(),
                 new TypeReference<>() {});
 
         mongoTemplate.insert(campaign);

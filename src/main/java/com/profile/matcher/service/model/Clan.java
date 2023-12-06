@@ -1,14 +1,14 @@
 package com.profile.matcher.service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+@JsonIgnoreProperties
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-@Document(collection = "clan")
 public class Clan {
 
-    @Id
     private String id;
     private String name;
 }

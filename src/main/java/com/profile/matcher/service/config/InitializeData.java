@@ -24,7 +24,7 @@ public class InitializeData {
 
     @PostConstruct
     public void init() throws IOException {
-        System.out.println("Initializing data");
+        System.out.println("Initializing data...");
 
         Campaign campaign = objectMapper.readValue(
                 new ClassPathResource(CAMPAIGN_JSON_PATH).getFile(),
@@ -36,6 +36,6 @@ public class InitializeData {
         mongoTemplate.insert(campaign);
         mongoTemplate.insert(profile);
 
-        System.out.println("Data initialization completed successfully");
+        System.out.println("Data initialization completed successfully!");
     }
 }

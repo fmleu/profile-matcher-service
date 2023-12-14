@@ -30,7 +30,7 @@ public class ProfileServiceImpl implements ProfileService {
                 log.info("No campaigns found");
             } else {
                 Double profileLevel = profile.getLevel();
-                boolean update = false;
+                boolean needsUpdate = false;
 
                 for (Campaign campaign : campaigns) {
                     Double min = campaign.getMatchers().getLevel().getMin();
@@ -38,11 +38,11 @@ public class ProfileServiceImpl implements ProfileService {
                     if (min <= profileLevel && max >= profileLevel) {
                         profile.getActiveCampaigns().add(campaign);
                         profile.setActiveCampaigns(profile.getActiveCampaigns());
-                        update = true;
+                        needsUpdate = true;
                     }
                 }
 
-                if (update) {
+                if (needsUpdate) {
                     profileDal.updateActiveCampaignsOnProfile(profile);
                 }
             }

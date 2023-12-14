@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.profile.matcher.service.util.Constants.ID_FIELD;
+import static com.profile.matcher.service.util.Constants.PROFILE_ACTIVE_CAMPAIGNS_FIELD;
+
 @Slf4j
 @AllArgsConstructor
 @Service
@@ -36,8 +39,9 @@ public class ProfileDalImpl implements ProfileDal {
 
     @Override
     public void updateActiveCampaignsOnProfile(Profile profile) {
-        Query query = new Query().addCriteria(Criteria.where("_id").in(profile.getPlayerId()));
-        Update update = new Update().set("activeCampaigns", profile.getActiveCampaigns());
+        Query query = new Query().addCriteria(Criteria.where(ID_FIELD).in(profile.getPlayerId()));
+        Update update = new Update().set(PROFILE_ACTIVE_CAMPAIGNS_FIELD, profile.getActiveCampaigns());
         mongoTemplate.upsert(query, update, Profile.class);
+        log.info("Profile with playerId {} is successfully updated", profile.getPlayerId());
     }
 }

@@ -9,4 +9,6 @@ public final class Constants {
     public static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss'Z'";
     public static final String CAMPAIGN_COLLECTION = "campaign";
     public static final String PROFILE_COLLECTION = "profile";
+    public static final String ID_FIELD = "_id";
+    public static final String PROFILE_ACTIVE_CAMPAIGNS_FIELD = "activeCampaigns";
 }

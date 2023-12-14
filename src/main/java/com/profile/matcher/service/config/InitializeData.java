@@ -8,12 +8,12 @@ import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-import static com.profile.matcher.service.util.Constants.CAMPAIGN_JSON_PATH;
-import static com.profile.matcher.service.util.Constants.PROFILE_JSON_PATH;
+import static com.profile.matcher.service.util.Constants.*;
 
 @AllArgsConstructor
 @Component
@@ -24,6 +24,9 @@ public class InitializeData {
 
     @PostConstruct
     public void init() throws IOException {
+        mongoTemplate.remove(new Query(), CAMPAIGN_COLLECTION);
+        mongoTemplate.remove(new Query(), PROFILE_COLLECTION);
+
         System.out.println("Initializing data...");
 
         Campaign campaign = objectMapper.readValue(

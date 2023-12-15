@@ -1,11 +1,12 @@
 package com.profile.matcher.service.exception;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
-public class ServiceException extends Throwable {
+public class ServiceException extends RuntimeException {
 
-    private final HttpStatus statusCode;
+    private final int statusCode;
     private final String message;
 }

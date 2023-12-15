@@ -31,7 +31,7 @@ public class ProfileDalImpl implements ProfileDal {
         Optional<Profile> optionalProfile = profileRepository.findById(playerId);
         if (optionalProfile.isEmpty()) {
             log.error("The profile with id {} not found", playerId);
-            throw new ServiceException(HttpStatus.NOT_FOUND, "Profile not found");
+            throw new ServiceException(HttpStatus.NOT_FOUND.value(), "Profile not found");
         }
 
         return optionalProfile.get();

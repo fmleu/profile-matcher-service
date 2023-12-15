@@ -53,7 +53,7 @@ public class ProfileServiceImpl implements ProfileService {
             throw exception;
         } catch (Exception exception) {
             log.error("Error: {}", exception.getMessage());
-            throw new ServiceException(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+            throw new ServiceException(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage());
         }
     }
 }
